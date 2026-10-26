@@ -1,0 +1,160 @@
+/* ==========================================================================
+   个人名片页 —— idcard.html
+   依赖 css/theme.css 中的设计变量
+   ========================================================================== */
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px 56px;
+}
+
+.back {
+    position: fixed;
+    top: 22px;
+    left: 24px;
+    font-size: 13px;
+    color: var(--text-faint);
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+}
+
+.back:hover {
+    color: var(--accent);
+}
+
+/* 标准名片比例 5:3 */
+.card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 5 / 3;
+    padding: 80px;
+    background: linear-gradient(155deg, #131218 0%, #0a0a0d 72%);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+/* 左上角一层极淡的暖光，和站点强调色呼应 */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 18% 42%, rgba(200, 176, 152, 0.1) 0%, transparent 58%);
+    pointer-events: none;
+}
+
+/* 左侧几何图形 */
+.logo-wrap {
+    position: relative;
+    flex-shrink: 0;
+    width: 180px;
+    height: 180px;
+}
+
+.sq1,
+.sq2 {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border: 2px solid rgba(255, 255, 255, 0.82);
+}
+
+.sq1 {
+    top: 20px;
+    left: 0;
+}
+
+.sq2 {
+    top: 0;
+    left: 20px;
+}
+
+.dot {
+    position: absolute;
+    top: 72px;
+    left: 42px;
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+}
+
+/* 右侧文字区域 */
+.info-area {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-left: 100px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+}
+
+.name {
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+}
+
+.role {
+    font-size: 15px;
+    opacity: 0.85;
+}
+
+.contact {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.9;
+    text-align: center;
+    color: var(--accent);
+}
+
+.contact a {
+    transition: color 0.2s ease;
+}
+
+.contact a:hover {
+    color: var(--accent-hi);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 720px) {
+    body {
+        padding: 56px 16px 40px;
+    }
+
+    .card {
+        aspect-ratio: auto;
+        min-height: 520px;
+        flex-direction: column;
+        gap: 40px;
+        padding: 40px 28px;
+    }
+
+    .logo-wrap {
+        transform: scale(0.8);
+    }
+
+    .info-area {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .name {
+        font-size: 26px;
+    }
+
+    .contact {
+        font-size: 13px;
+    }
+}

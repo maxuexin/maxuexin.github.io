@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的快捷键</title>
+<meta name="description" content="maxuexin 的个人自定义快捷键：AutoCAD 键位、Revit、SketchUp 与 Windows 常用操作，支持关键词搜索。">
+<meta name="theme-color" content="#08080b">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="../img/favicon-48.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/shortcuts.css">
+</head>
+<body>
+
+<main id="app" data-view="mine">
+    <h1 class="page-title" id="page-title">我的快捷键</h1>
+    <p class="page-note" id="page-note">作者：mxx</p>
+
+    <div class="tool-bar">
+        <label class="sr-only" for="search">搜索快捷键</label>
+        <input id="search" type="search" placeholder="搜索快捷键 / 功能名称" autocomplete="off">
+    </div>
+
+    <div class="tab-bar" id="tab-bar" role="tablist" aria-label="应用切换"></div>
+    <div id="boards"></div>
+
+    <p class="footer-tip" id="footer-tip"></p>
+</main>
+
+<script src="../js/shortcuts-data.js"></script>
+<script src="../js/shortcuts.js"></script>
+</body>
+</html>

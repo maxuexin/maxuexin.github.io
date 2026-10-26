@@ -1,0 +1,166 @@
+/* ==========================================================================
+   网站收藏页面 —— 分类面板与网站卡片
+   依赖 css/theme.css 设计变量与 css/shortcuts.css 的页头/工具栏/标签页样式
+   ========================================================================== */
+
+/* ---------- 分类面板 ---------- */
+.sites-panel {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 36px 36px 40px;
+    background: linear-gradient(160deg, #15141a 0%, #0b0b0e 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow:
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* ---------- 卡片网格：数量少时居中，不挤成一列 ---------- */
+.sites-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
+    align-content: start;
+}
+
+.sites-panel .board-empty,
+.sites-panel .sites-empty {
+    grid-column: 1 / -1;
+}
+
+/* ---------- 网站卡片 ---------- */
+.site-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 15px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.site-card:hover {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: var(--accent-line);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+}
+
+.site-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.site-avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-veil);
+    border: 1px solid var(--accent-line);
+    user-select: none;
+}
+
+.site-card:hover .site-avatar {
+    color: var(--accent-hi);
+    box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.site-body {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.site-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.3px;
+    word-break: break-word;
+}
+
+.site-desc {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--text-dim);
+    word-break: break-word;
+}
+
+.site-host {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.site-arrow {
+    position: absolute;
+    top: 13px;
+    right: 14px;
+    font-size: 13px;
+    color: var(--text-faint);
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    transition: opacity 0.22s ease, transform 0.22s ease, color 0.22s ease;
+}
+
+.site-card:hover .site-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+    color: var(--accent);
+}
+
+/* ---------- 空状态 ---------- */
+.board-empty {
+    margin: 0;
+    padding: 38px 24px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 2;
+    border: 1px dashed var(--line-soft);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.board-empty strong {
+    display: block;
+    color: var(--text-soft);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 900px) {
+    .sites-panel {
+        padding: 26px 22px 30px;
+    }
+}
+
+@media (max-width: 620px) {
+    .sites-panel {
+        grid-template-columns: 1fr;
+        padding: 20px 14px 24px;
+    }
+
+    .site-card {
+        padding: 13px 14px;
+    }
+}

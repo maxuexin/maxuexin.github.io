@@ -1,0 +1,191 @@
+/* ==========================================================================
+   设计变量与基础样式 —— 全站三页共用
+   引入顺序：theme.css 必须排在各自页面的样式之前
+   ========================================================================== */
+
+:root {
+    color-scheme: dark;
+
+    /* 底色 */
+    --bg: #08080b;
+    --bg-glow: #1a191d;
+    --surface: rgba(255, 255, 255, 0.04);
+    --surface-hover: rgba(255, 255, 255, 0.08);
+    --surface-solid: #131217;
+    --surface-solid-hi: #1a191e;
+    --line: rgba(255, 255, 255, 0.08);
+    --line-soft: rgba(255, 255, 255, 0.12);
+
+    /* 文字 */
+    --text: #e9e9f0;
+    --text-soft: #c9c9d4;
+    --text-dim: #9a9aa8;
+    --text-faint: #64647a;
+
+    /* 强调色：香槟金，取自个人名片 */
+    --accent: #c8b098;
+    --accent-hi: #ddc9b4;
+    --accent-veil: rgba(200, 176, 152, 0.12);
+    --accent-line: rgba(200, 176, 152, 0.32);
+    --accent-glow: rgba(200, 176, 152, 0.2);
+
+    /* 圆角与阴影 */
+    --radius-sm: 8px;
+    --radius: 14px;
+    --radius-lg: 20px;
+    --shadow-lg: 0 40px 80px rgba(0, 0, 0, 0.7);
+
+    /* 字体 */
+    --font-ui: 'Segoe UI', system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
+    --font-mono: 'Consolas', 'Cascadia Mono', 'Microsoft YaHei', ui-monospace, monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg);
+    background-image: radial-gradient(circle at 50% 0%, var(--bg-glow) 0%, var(--bg) 65%);
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* ---------- 焦点与选中 ---------- */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+::selection {
+    background: rgba(200, 176, 152, 0.28);
+    color: #fff;
+}
+
+/* ---------- 滚动条 ---------- */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    border: 2px solid var(--bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- 全站统一的页脚 ---------- */
+.site-footer {
+    margin-top: 44px;
+    text-align: center;
+    color: var(--text-faint);
+    font-size: 13px;
+    letter-spacing: 0.3px;
+}
+
+/* ---------- 收藏页的「下载链接」按钮（js/drive-btn.js 注入） ----------
+   桌面端由脚本测量标题文字右边缘后内联定位，紧贴标题；
+   窄屏（≤600px）退回页面右上角，靠下面的媒体查询生效。 */
+.has-drive-btn {
+    position: relative;
+}
+
+.drive-btn {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text-dim);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.drive-btn svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+}
+
+.drive-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent-line);
+    background: var(--accent-veil);
+}
+
+.drive-btn.is-disabled {
+    border-style: dashed;
+    color: var(--text-faint);
+    cursor: default;
+}
+
+.drive-btn.is-disabled:hover {
+    color: var(--text-faint);
+    border-color: var(--line);
+    background: var(--surface);
+}
+
+@media (max-width: 600px) {
+    .drive-btn {
+        top: 2px;
+        padding: 6px 12px;
+        font-size: 12px;
+        gap: 5px;
+    }
+
+    .drive-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    /* 长标题（如「软件插件收藏」）在窄屏会和右上角按钮重叠，标题下移让开 */
+    .has-drive-btn .page-title {
+        padding-top: 38px;
+    }
+}
+
+/* ---------- 减少动效 ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}

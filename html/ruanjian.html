@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>软件插件收藏</title>
+<meta name="description" content="maxuexin 的软件插件收藏：常用软件与插件清单，支持名称搜索。">
+<meta name="theme-color" content="#08080b">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="../img/favicon-48.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/shortcuts.css">
+<link rel="stylesheet" href="../css/music.css">
+</head>
+<body>
+
+<main id="app">
+    <h1 class="page-title" id="page-title">软件插件收藏</h1>
+    <p class="page-note" id="page-note"></p>
+
+    <div class="tool-bar">
+        <label class="sr-only" for="search">搜索软件插件</label>
+        <input id="search" type="search" autocomplete="off">
+    </div>
+
+    <div class="music-layout">
+        <div class="mobile-picker" id="mobile-picker">
+            <label class="sr-only" for="group-select">选择分组</label>
+            <select id="group-select"></select>
+        </div>
+
+        <aside class="artist-nav" aria-label="分组索引">
+            <div class="artist-nav-head">
+                <span id="group-nav-head">分组</span>
+                <span class="artist-nav-total" id="group-total">0</span>
+            </div>
+            <ul class="artist-list" id="group-list"></ul>
+        </aside>
+
+        <section class="music-main" id="boards" aria-live="polite"></section>
+    </div>
+
+    <p class="footer-tip" id="footer-tip"></p>
+</main>
+
+<script src="../js/ruanjian-data.js"></script>
+<script src="../js/collection.js"></script>
+<script src="../js/drive-btn.js"></script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+/* ==========================================================================
+   首页 —— 个人门户
+   依赖 css/theme.css 中的设计变量
+   ========================================================================== */
+
+.container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* ---------- 头部 ---------- */
+.profile .avatar {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--line-soft);
+    box-shadow: 0 0 30px var(--accent-veil);
+}
+
+.profile .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile h1 {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    color: var(--text-dim);
+    margin-top: 8px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* ---------- 主推卡片：个人名片 ---------- */
+.featured {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 36px;
+    padding: 22px 28px;
+    text-align: left;
+    border-radius: 18px;
+    border: 1px solid var(--accent-line);
+    background:
+        linear-gradient(120deg, rgba(200, 176, 152, 0.17) 0%, rgba(255, 255, 255, 0.035) 55%, rgba(255, 255, 255, 0.02) 100%);
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.featured::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent), rgba(200, 176, 152, 0));
+}
+
+.featured:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.featured-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.featured-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.featured-title {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.featured-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+}
+
+.featured-arrow {
+    flex-shrink: 0;
+    font-size: 20px;
+    color: var(--text-dim);
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.featured:hover .featured-arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+}
+
+/* ---------- 链接网格 ---------- */
+.links {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 20px;
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 58px;
+    padding: 14px 20px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.link-card:hover {
+    background: var(--surface-hover);
+    border-color: var(--accent-line);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    color: var(--text-dim);
+    transition: color 0.25s ease;
+}
+
+.icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.link-card:hover .icon {
+    color: var(--accent);
+}
+
+.text {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* 7 张卡片落单时，让最后一张横跨整行，避免 3 列网格出现 1 张孤儿卡 */
+.links .link-card:last-child:nth-child(3n + 1) {
+    grid-column: 1 / -1;
+    justify-content: center;
+}
+
+/* ---------- 建设中收藏区 ---------- */.soon {
+    margin-top: 44px;
+    padding-top: 28px;
+    border-top: 1px dashed var(--line);
+}
+
+.soon-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 16px;
+}
+
+.soon-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.soon-list li {
+    padding: 6px 14px;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    border: 1px dashed var(--line-soft);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 860px) {
+    .links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 40px 16px;
+    }
+
+    .links {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .featured {
+        padding: 20px 22px;
+    }
+
+    .featured-desc {
+        display: none;
+    }
+
+    .profile h1 {
+        font-size: 27px;
+    }
+}

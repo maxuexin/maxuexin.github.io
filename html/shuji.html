@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>书籍收藏</title>
+<meta name="description" content="maxuexin 的书籍收藏：私人书单，支持书名搜索。">
+<meta name="theme-color" content="#08080b">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="../img/favicon-48.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/shortcuts.css">
+<link rel="stylesheet" href="../css/music.css">
+</head>
+<body>
+
+<main id="app">
+    <h1 class="page-title" id="page-title">书籍收藏</h1>
+    <p class="page-note" id="page-note"></p>
+
+    <div class="tool-bar">
+        <label class="sr-only" for="search">搜索书籍</label>
+        <input id="search" type="search" autocomplete="off">
+    </div>
+
+    <div class="music-layout">
+        <div class="mobile-picker" id="mobile-picker">
+            <label class="sr-only" for="group-select">选择作者</label>
+            <select id="group-select"></select>
+        </div>
+
+        <aside class="artist-nav" aria-label="作者索引">
+            <div class="artist-nav-head">
+                <span id="group-nav-head">作者</span>
+                <span class="artist-nav-total" id="group-total">0</span>
+            </div>
+            <ul class="artist-list" id="group-list"></ul>
+        </aside>
+
+        <section class="music-main" id="boards" aria-live="polite"></section>
+    </div>
+
+    <p class="footer-tip" id="footer-tip"></p>
+</main>
+
+<script src="../js/shuji-data.js"></script>
+<script src="../js/collection.js"></script>
+<script src="../js/drive-btn.js"></script>
+</body>
+</html>
